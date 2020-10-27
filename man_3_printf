@@ -1,0 +1,54 @@
+.TH man 3  "26 Oct 2020" "Version 1.0" "_printf man page"
+.SH NAME
+.B _printf - formatted output conversion
+.SH SYNOPSIS
+
+#include <stdio.h>
+
+
+
+int _printf(const char *format, ...);
+
+.SH DESCRIPTION
+.B _printf
+is the C language function to do formated printing. In the most simple case, printf takes one argument: a string of characters to be printed. This string is composed of characters, each of which is printed exactly as it appears.
+
+.PP
+.B Return Value
+Upon successful return, these functions return the number  of  characters printed (excluding the null byte used to end output to strings).
+
+If an output error is encountered, a negative value is returned.
+.PP
+.B Naturally Special Characters
+To identify the start of the string, we put a doublequote (") at the front. To identify the end of the string we put another double-quote at the end. Some require the special character to be entered twice. C uses backslash (virgule, \) as an escape character to change the meaning of the next character after it. Thus, to print a doublequote you type in backslash double-quote. To print a backslash, you must escape it by typing another backslash in front of it. The first backslash means give the next character its alternate meaning. The second backslash has an alternate meaning of print a backslash. Without a backslash, special characters have a natural special meaning. With a backslash they print as they appear.)")
+
+.PP
+.B Format Specifications
+The real power of printf is when we are printing the contents of variables. Lets take the format specifier %d for example. This prints a number. So, a number must be provided for printing. This is done by adding another argument to the printf statement, as shown here.
+
+int age;
+
+age = 25;
+
+ printf ( "I am %d years old\n", age );
+
+In this example, printf has two arguments. The first is a string: "I am %d years old\n". The second is an integer, age.
+
+.PP
+.B The Argument List
+When printf processes its arguments, it starts printing the characters it finds in the first argument, one by one. When it finds a percent it knows it has a format specification. It goes to the next argument and uses its value, printing it according to that format specification. It then returns to printing a character at a time (from the first argument).
+It is okay to include more than one format specification in the printf string. In that case, the first format specification goes with the first additional argument, second goes with second, and so forth.
+.SH EXAMPLE
+
+int x = 5, y = 10;
+
+printf ( "x is %d and y is %d\n", x, y );
+
+.SH SEE ALSO
+There are more different functions for printing. _putchar(), _puts(), write()
+.SH BUGS
+No know bugs.
+
+.SH AUTHORS
+Giraluna Gomez
+Juan Pablo Montoya
