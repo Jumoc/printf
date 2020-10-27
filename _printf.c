@@ -1,46 +1,72 @@
 #include "holberton.h"
-/**
+
+int _strlen(char *buffer)
+{
+	int size = 0;
+
+	while (buffer[size] != '\0')
+	{
+		size++;
+	}
+	return (size);
+}
+
+/**	
  * _printf - function printf
  * @format: specifier format
+ * Return: size of printed buffer
  */
 
 int _printf(const char *format, ...)
 {
-	int i = 0, j;
-	va_list ap;
-	specifier arr[] = {{'c', print_char},
-			    {'d', print_decimal},
-			    {'u', print_unsigned_decimal}
-			    {'i', print_integer},
-			    {'s', print_string},
-			    {'o', print_unsigned_octal},
-			    {'x', print_unsigned_hexidecimal},
-			    {'X', print_unsigned_dec_upper},
-			    {'S', print_string_upper},
-			    {'p', print_pointer_address},
-			    {'f', print_floating_point},
-			    {'b', print_binary},
-			    {'r', print_reversed},
-			    {'R', print_rot13},
-		    };
-	va_start(ap, format);
-	while (format[i] != '0' && format != NULL)
+	int i = 0, j, aux = 0, totalSize = 0;
+	va_list args;
+
+	char *buffer;
+
+	buffer = malloc(1024 * sizeof(char));
+
+	specifier specifiers[] = {
+		{'c', print_char},
+		{'i', print_int},
+		{'\0', NULL}
+	};
+
+	va_start(args, format);
+
+	while (format[i] != '\0')
 	{
-		if (format[i] == '%')
+		if(format[i] == '%')
 		{
-			j = 0;
-			while (j < 14)
+		j = 0;
+		while (specifiers[j].type != '\0')
+		{
+			if (specifiers[j].type == format[i + 1])
 			{
-				if (format[i + 1] == arr[j].type)
-				{
-					arr[j].f(ap);
-					break;
-				}
-				j++;
+				aux = specifiers[j].f(args, buffer, aux);
 			}
+			j++;
+		}
+		} else
+		{
+			if (i != 0)
+			{
+				if (format[i - 1] != '%')
+				{
+					buffer[aux] = format[i];
+				}
+			}
+			else
+			{
+				buffer[aux] = format[i];
+			}
+			aux++;
 		}
 		i++;
 	}
-	va_end(ap);
-	return (buffer);
+	totalSize = _strlen(buffer);
+	write(1, buffer, totalSize);
+	free(buffer);
+	va_end(args);
+	return(totalSize);
 }
