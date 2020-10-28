@@ -18,7 +18,7 @@ int print_char(va_list args, char* buffer, int size)
 
 	buffer[size] = va_arg(args, int);
 	buffer[size + 1] = '\0';
-    
+	
 	return (_strlen(buffer) - 1);
 }
 
