@@ -2,3 +2,7 @@
 
 this function is meant to work like the **stdio** function **printf**
 our goal is to make it as close as possible to the original one.
+
+##Function options
+**c** - prints a character
+**Example:** - printf("The first letter of the alphabet is %c", 'a')
