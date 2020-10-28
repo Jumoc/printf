@@ -2,6 +2,9 @@
 #define HOLBERTON_H
 
 #include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 /**
  * struct specifier - struct that holds a function and a char
@@ -14,7 +17,13 @@
 typedef struct specifier
 {
 	char type;
-	char *(*f)(va_list);
+	int (*f)(va_list, char *, int);
 } specifier;
+
+int print_char(va_list args, char *, int);
+int _printf(const char *format, ...);
+int _strlen(char *buffer);
+int print_int(va_list args, char* buffer, int size);
+int print_percent(va_list args, char* buffer, int size);
 
 #endif
