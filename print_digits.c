@@ -1,7 +1,9 @@
 #include "holberton.h"
 
-/*
- * Put here all functions related to numbers and digits
+/**
+ * count_digits - Counter arrays
+ * @number: value have counted
+ * Return: size
  */
 
 int count_digits(int number)
@@ -16,6 +18,13 @@ int count_digits(int number)
 
 	return (size);
 }
+
+/**
+ * trans_number - Pointer that contain the revert numbers
+ * @number: to revert
+ * @size: size of array
+ * Return: pointer revert
+ */
 
 char *trans_number(int number, int size)
 {
@@ -62,9 +71,12 @@ char *trans_number(int number, int size)
 }
 
 /**
- * print_char - prints a character
+ * print_int - prints a integer number
  *
  * @args: va_list that contains all the arguments
+ * @buffer: buffer that contains the string to be printed
+ * @size: size or index where the new character is going to be added
+ * Return: size of the buffer
  */
 int print_int(va_list args, char *buffer, int size)
 {
