@@ -24,6 +24,7 @@ int _printf(const char *format, ...)
 	int i = 0, j, aux = 0, totalSize = 0;
 	va_list args;
 	char *buffer;
+
 	specifier specifiers[6] = {
 		{'c', print_char},
 		{'d', print_int},
