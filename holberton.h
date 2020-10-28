@@ -25,5 +25,6 @@ int _printf(const char *format, ...);
 int _strlen(char *buffer);
 int print_int(va_list args, char* buffer, int size);
 int print_percent(va_list args, char* buffer, int size);
+int print_string(va_list args, char* buffer, int size);
 
 #endif

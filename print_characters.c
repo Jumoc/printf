@@ -21,7 +21,6 @@ int print_char(va_list args, char *buffer, int size)
 
 	return (_strlen(buffer) - 1);
 }
-
 /**
  * print_percent - prints a percent
  *
@@ -39,7 +38,6 @@ int print_percent(va_list args, char *buffer, int size)
 
 	return (_strlen(buffer) - 1);
 }
-
 /**
  * print_string - prints a string
  *

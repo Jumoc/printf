@@ -1,5 +1,9 @@
 #include "holberton.h"
-
+/**
+ * _strlen - function that obtain the length of buffer
+ * @buffer: pointer contain digits
+ * Return: size of buffer;
+ */
 int _strlen(char *buffer)
 {
 	int size = 0;
@@ -24,16 +28,17 @@ int _printf(const char *format, ...)
 	char *buffer;
 
 	buffer = malloc(1024 * sizeof(char));
+
 	if (!buffer)
 		exit(-1);
-	specifier specifiers[] = {
-		{'c', print_char},
-		{'d', print_int},
-		{'i', print_int},
-		{'%', print_percent},
+
+	specifier specifiers[] = {{'c', print_char}, {'d', print_int},
+		{'i', print_int}, {'s', print_string}, {'%', print_percent},
 		{'\0', NULL}
 	};
+
 	va_start(args, format);
+
 	while (format[i] != '\0')
 	{
 		if (format[i] == '%')
