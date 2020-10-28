@@ -26,19 +26,15 @@ int _printf(const char *format, ...)
 	int i = 0, j, aux = 0, totalSize = 0;
 	va_list args;
 	char *buffer;
-
-	buffer = malloc(1024 * sizeof(char));
-
-	if (!buffer)
-		exit(-1);
-
 	specifier specifiers[] = {{'c', print_char}, {'d', print_int},
-		{'i', print_int}, {'s', print_string}, {'%', print_percent},
-		{'\0', NULL}
+				  {'i', print_int}, {'s', print_string}, {'%', print_percent},
+				  {'\0', NULL}
 	};
 
+	buffer = malloc(1024 * sizeof(char));
+	if (!buffer)
+		exit(-1);
 	va_start(args, format);
-
 	while (format[i] != '\0')
 	{
 		if (format[i] == '%')
