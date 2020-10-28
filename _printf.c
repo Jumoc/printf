@@ -2,7 +2,7 @@
 /**
  * _strlen - function that obtain the length of buffer
  * @buffer: pointer contain digits
- * Return: size of buffer;
+ * Return: size of buffer
  */
 int _strlen(char *buffer)
 {
@@ -14,7 +14,21 @@ int _strlen(char *buffer)
 	}
 	return (size);
 }
+/**
+ * _strlen_const - function that obtain the length of buffer
+ * @buffer: pointer contain digits
+ * Return: size of buffer
+ */
+int _strlen_const(const char *buffer)
+{
+	int size = 0;
 
+	while (buffer[size] != '\0')
+	{
+		size++;
+	}
+	return (size);
+}
 /**
  * _printf - function printf
  * @format: specifier format
@@ -32,7 +46,7 @@ int _printf(const char *format, ...)
 	};
 
 	buffer = malloc(1024 * sizeof(char));
-	if (!buffer || !format)
+	if (!buffer || !format || (format[i] == '%' && _strlen_const(format) == 1))
 		exit(-1);
 	va_start(args, format);
 	while (format[i] != '\0')
