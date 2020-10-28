@@ -32,7 +32,7 @@ int _printf(const char *format, ...)
 	};
 
 	buffer = malloc(1024 * sizeof(char));
-	if (!buffer)
+	if (!buffer || !format)
 		exit(-1);
 	va_start(args, format);
 	while (format[i] != '\0')
