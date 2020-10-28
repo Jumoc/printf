@@ -28,7 +28,9 @@ int _printf(const char *format, ...)
 
 	specifier specifiers[] = {
 		{'c', print_char},
+		{'d', print_int},
 		{'i', print_int},
+		{'%', print_percent},
 		{'\0', NULL}
 	};
 
@@ -38,32 +40,49 @@ int _printf(const char *format, ...)
 	{
 		if(format[i] == '%')
 		{
-		j = 0;
-		while (specifiers[j].type != '\0')
-		{
-			if (specifiers[j].type == format[i + 1])
+			if (i != 0)
 			{
-				aux = specifiers[j].f(args, buffer, aux);
+				if (format[i - 1] == '%')
+				{
+					i++;
+					aux++;
+					continue;
+				}
 			}
-			j++;
-		}
+			j = 0;
+			while (specifiers[j].type != '\0')
+			{
+				if (specifiers[j].type == format[i + 1])
+				{
+					aux = specifiers[j].f(args, buffer, aux);
+					break;
+				}
+				j++;
+			}
 		} else
 		{
 			if (i != 0)
 			{
-				if (format[i - 1] != '%')
+				if (format[i - 1] == '%')
+                		{
+                   			 if (format[i - 2] == '%')
+                   			 {
+                       				 buffer[aux] = format[i];
+                   			 }
+                		} else
 				{
-					buffer[aux] = format[i];
+                    			buffer[aux] = format[i];
 				}
 			}
 			else
 			{
 				buffer[aux] = format[i];
 			}
-			aux++;
+			aux++;	
 		}
 		i++;
 	}
+	buffer[aux] = '\0';
 	totalSize = _strlen(buffer);
 	write(1, buffer, totalSize);
 	free(buffer);
