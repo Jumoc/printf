@@ -38,3 +38,35 @@ int print_percent(va_list args, char* buffer, int size)
     
 	return (_strlen(buffer) - 1);
 }
+
+/**
+ * print_string - prints a string
+ * 
+ * @buffer: buffer that contains the string to be printed
+ * @size: size or index where the new character is going to be added
+ *
+ * Return: size of the buffer
+ */
+
+int print_string(va_list args, char* buffer, int size)
+{
+
+	int i;
+	*ptr = "(null)";
+	char* string = va_arg(args, char*)
+
+
+	if (string == NULL)
+	{
+		string = "(null)";
+	}
+	for (i = 0; string[i] != '\0'; i++)
+	{
+		buffer[size] = string[i];
+		size++;
+	}
+	buffer[size] = '\0';
+
+	return (_strlen(buffer) - 1);
+}
+
