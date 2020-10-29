@@ -91,6 +91,12 @@ int print_int(va_list args, char *buffer, int size)
 		num *= -1;
 		size++;
 	}
+	if (num == 0)
+	{
+		buffer[size] = '0';
+		buffer[size + 1] = '\0';
+		return (_strlen(buffer));
+	}
 
 	digits = count_digits(num);
 
@@ -104,6 +110,44 @@ int print_int(va_list args, char *buffer, int size)
 	}
 
 	free(numbers);
+
+	buffer[size] = '\0';
+
+	return (_strlen(buffer));
+}
+
+/**
+ * print_int - prints a integer number
+ *
+ * @args: va_list that contains all the arguments
+ * @buffer: buffer that contains the string to be printed
+ * @size: size or index where the new character is going to be added
+ * Return: size of the buffer
+ */
+int print_binary(va_list args, char *buffer, int size)
+{
+	int num;
+
+	num = va_arg(args, unsigned int);
+
+	if (num < 0)
+	{
+		buffer[size] = '-';
+		num *= -1;
+		size++;
+
+	} else if (num == 0)
+	{
+		buffer[size] = '0';
+		size++;
+	}
+
+	while(num != 0)
+  	{
+		buffer[size] = (num % 2) + '0';
+		num /= 2;
+		size++;
+  	}
 
 	buffer[size] = '\0';
 
