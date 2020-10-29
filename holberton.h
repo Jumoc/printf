@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <limits.h>
 
 /**
  * struct specifier - struct that holds a function and a char
@@ -26,5 +27,6 @@ int _strlen(char *buffer);
 int print_int(va_list args, char *buffer, int size);
 int print_percent(va_list args, char *buffer, int size);
 int print_string(va_list args, char *buffer, int size);
+int print_binary(va_list args, char *buffer, int size);
 
 #endif
