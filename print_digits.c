@@ -45,9 +45,9 @@ char *trans_number(int number, int size)
 		free(ptrRev);
 		return (NULL);
 	}
-	/*
-	* puts the number in the array, but reversed
-	*/
+/*
+ * puts the number in the array, but reversed
+ */
 	while (i < size)
 	{
 		ptr[i] = (number % 10) + '0';
@@ -55,9 +55,9 @@ char *trans_number(int number, int size)
 		i++;
 	}
 	ptr[i] = '\0';
-	/*
-	 * reverses the array
-	 */
+/*
+ * reverses the array
+ */
 	while (ptr[j] != '\0')
 	{
 		ptrRev[j] = ptr[i - 1];
@@ -143,11 +143,19 @@ int print_binary(va_list args, char *buffer, int size)
 	}
 
 	while(num != 0)
+<<<<<<< HEAD
   	{
 		buffer[size] = (num % 2) + '0';
 		num /= 2;
 		size++;
   	}
+=======
+	{
+		buffer[size] = (num % 2) + '0';
+		num /= 2;
+		size++;
+	}
+>>>>>>> b7bd23fd118fbd3751529aae78b351d1e079c964
 
 	buffer[size] = '\0';
 
