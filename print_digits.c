@@ -45,9 +45,9 @@ char *trans_number(int number, int size)
 		free(ptrRev);
 		return (NULL);
 	}
-	/*
-	* puts the number in the array, but reversed
-	*/
+/*
+ * puts the number in the array, but reversed
+ */
 	while (i < size)
 	{
 		ptr[i] = (number % 10) + '0';
@@ -55,9 +55,9 @@ char *trans_number(int number, int size)
 		i++;
 	}
 	ptr[i] = '\0';
-	/*
-	 * reverses the array
-	 */
+/*
+ * reverses the array
+ */
 	while (ptr[j] != '\0')
 	{
 		ptrRev[j] = ptr[i - 1];
@@ -90,6 +90,12 @@ int print_int(va_list args, char *buffer, int size)
 		buffer[size] = '-';
 		num *= -1;
 		size++;
+	}
+	if (num == 0)
+	{
+		buffer[size] = '0';
+		buffer[size + 1] = '\0';
+		return (_strlen(buffer));
 	}
 
 	digits = count_digits(num);
