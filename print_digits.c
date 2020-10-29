@@ -117,7 +117,7 @@ int print_int(va_list args, char *buffer, int size)
 }
 
 /**
- * print_int - prints a integer number
+ * print_binary - prints a integer number
  *
  * @args: va_list that contains all the arguments
  * @buffer: buffer that contains the string to be printed
@@ -142,20 +142,12 @@ int print_binary(va_list args, char *buffer, int size)
 		size++;
 	}
 
-	while(num != 0)
-<<<<<<< HEAD
-  	{
-		buffer[size] = (num % 2) + '0';
-		num /= 2;
-		size++;
-  	}
-=======
+	while (num != 0)
 	{
 		buffer[size] = (num % 2) + '0';
 		num /= 2;
 		size++;
 	}
->>>>>>> b7bd23fd118fbd3751529aae78b351d1e079c964
 
 	buffer[size] = '\0';
 
