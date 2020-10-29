@@ -24,7 +24,7 @@ To identify the start of the string, we put a doublequote (") at the front. To i
 
 .PP
 .B Format Specifications
-The real power of printf is when we are printing the contents of variables. Lets take the format specifier %d for example. This prints a number. So, a number must be provided for printing. This is done by adding another argument to the printf statement, as shown here.
+The real power of printf is when we are printing the contents of variables. Lets take the format specifier %d for example. This prints a number. So, a number must be provided for printing. This is done by adding another argumentto the printf statement, as shown here.
 
 int age;
 
@@ -34,10 +34,24 @@ age = 25;
 
 In this example, printf has two arguments. The first is a string: "I am %d years old\n". The second is an integer, age.
 
+.PP LIST  Format Specifications
+%c print a single character
+%d print a decimal (base 10) number
+%e print an exponential floating-point number
+%f print a floating-point number
+%g print a general-format floating-point number
+%i print an integer in base 10
+%o print a number in octal (base 8)
+%s print a string of characters
+%u print an unsigned decimal (base 10) number
+%x print a number in hexidecimal (base 16)
+%% print a percent sign (\% also works)
+
 .PP
 .B The Argument List
 When printf processes its arguments, it starts printing the characters it finds in the first argument, one by one. When it finds a percent it knows it has a format specification. It goes to the next argument and uses its value, printing it according to that format specification. It then returns to printing a character at a time (from the first argument).
 It is okay to include more than one format specification in the printf string. In that case, the first format specification goes with the first additional argument, second goes with second, and so forth.
+
 .SH EXAMPLE
 
 int x = 5, y = 10;
@@ -50,5 +64,4 @@ There are more different functions for printing. _putchar(), _puts(), write()
 No know bugs.
 
 .SH AUTHORS
-Giraluna Gomez
-Juan Pablo Montoya
+Giraluna Gomez - Juan Pablo Montoya
