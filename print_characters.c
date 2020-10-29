@@ -19,7 +19,7 @@ int print_char(va_list args, char *buffer, int size)
 	buffer[size] = va_arg(args, int);
 	buffer[size + 1] = '\0';
 
-	return (_strlen(buffer) - 1);
+	return (_strlen(buffer));
 }
 /**
  * print_percent - prints a percent
@@ -36,7 +36,7 @@ int print_percent(va_list args, char *buffer, int size)
 	buffer[size] = '%';
 	buffer[size + 1] = '\0';
 
-	return (_strlen(buffer) - 1);
+	return (_strlen(buffer));
 }
 /**
  * print_string - prints a string
@@ -64,5 +64,5 @@ int print_string(va_list args, char *buffer, int size)
 	}
 	buffer[size] = '\0';
 
-	return (_strlen(buffer) - 1);
+	return (_strlen(buffer));
 }

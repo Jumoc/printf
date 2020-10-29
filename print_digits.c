@@ -34,16 +34,17 @@ char *trans_number(int number, int size)
 	ptr = malloc(size * sizeof(char) + 1);
 	if (ptr == NULL)
 	{
-		exit(-1);
+		free(ptr);
+		return (NULL);
 	}
 
 	ptrRev = malloc(size * sizeof(char) + 1);
 	if (ptrRev == NULL)
 	{
 		free(ptr);
-		exit(-1);
+		free(ptrRev);
+		return (NULL);
 	}
-
 	/*
 	* puts the number in the array, but reversed
 	*/
@@ -54,7 +55,6 @@ char *trans_number(int number, int size)
 		i++;
 	}
 	ptr[i] = '\0';
-
 	/*
 	 * reverses the array
 	 */
@@ -65,7 +65,6 @@ char *trans_number(int number, int size)
 		j++;
 	}
 	ptrRev[j] = '\0';
-
 	free(ptr);
 	return (ptrRev);
 }
@@ -108,5 +107,5 @@ int print_int(va_list args, char *buffer, int size)
 
 	buffer[size] = '\0';
 
-	return (_strlen(buffer) - 1);
+	return (_strlen(buffer));
 }
