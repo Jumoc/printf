@@ -47,7 +47,10 @@ int _printf(const char *format, ...)
 
 	buffer = malloc(1024 * sizeof(char));
 	if (!buffer || !format || (format[i] == '%' && _strlen_const(format) == 1))
-		exit(-1);
+	{
+		free(buffer);
+		return (0);
+	}
 	va_start(args, format);
 	while (format[i] != '\0')
 	{
