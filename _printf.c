@@ -41,8 +41,8 @@ int _printf(const char *format, ...)
 	va_list args;
 	char *buffer;
 	specifier specifiers[] = {{'c', print_char}, {'d', print_int},
-				  {'i', print_int}, {'s', print_string}, {'%', print_percent},
-				  {'\0', NULL}
+	{'b', print_binary}, {'i', print_int},
+	{'s', print_string}, {'%', print_percent}, {'\0', NULL}
 	};
 
 	buffer = malloc(1024 * sizeof(char));
