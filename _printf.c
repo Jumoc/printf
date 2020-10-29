@@ -23,7 +23,7 @@ int _strlen(char *buffer)
 
 int _printf(const char *format, ...)
 {
-	int i = 0, j, aux = 0, totalSize = 0;
+	int i = 0, j, aux = 0, totalSize = 0, bo = 0;
 	va_list args;
 	char *buffer;
 	specifier specifiers[] = {{'c', print_char}, {'d', print_int},
@@ -39,42 +39,32 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			if (i != 0)
-			{
-				if (format[i - 1] == '%')
-				{
-					i++;
-					aux++;
-					continue;
-				}
-			}
 			j = 0;
 			while (specifiers[j].type != '\0')
 			{
 				if (specifiers[j].type == format[i + 1])
 				{
 					aux = specifiers[j].f(args, buffer, aux);
-					break;
+					bo = 1;
 				}
 				j++;
 			}
+			if (bo == 0)
+			{
+				buffer[aux++] = format[i];
+				buffer[aux++] = format[i + 1];
+			} else
+				bo = 0;
+
+			i++;
 		} else
 		{
-			if (i != 0)
-			{
-				if (format[i - 1] == '%')
-				{
-					if (format[i - 2] == '%')
-						buffer[aux] = format[i];
-				} else
-					buffer[aux] = format[i];
-			}
-			else
-				buffer[aux] = format[i];
+			buffer[aux] = format[i];
 			aux++;
 		}
 		i++;
 	}
+
 	buffer[aux] = '\0';
 	totalSize = _strlen(buffer);
 	write(1, buffer, totalSize);
